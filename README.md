@@ -42,11 +42,12 @@ A simple PHP-based server status web app for monitoring and displaying uptime an
 ## Usage
 - Configure your servers in the database.
 - The cron job (`cron.php`) should be scheduled to run at your desired interval (e.g., every 5 minutes). The frequency in the config file is just to display on the site, but obviously that should match the cron time so that it makes sense.
-- The web interface will display server status, uptime, and recent checks.
+- The web interface will display server status and uptime.
+- You will be notified by email when a server is down and also when it comes back up.
 
 ## Customization
 - Everything is configured in `config.php`.
-- Possible display options for servers are public, private, and disabled. public show on home and can be accessed via slug. private can be accessed via slug but doesn't display on home page. disabled won't display on home page and accessing the slug will return a 403.
+- Possible display options for servers are public, private, and disabled. public displays on home page and can be accessed via slug. private can be accessed via slug but doesn't display on home page. disabled won't display on home page and accessing the slug will return a 403.
 
 ## Notes
 - The last checked time on the server page automatically deducts 5 minutes from the actual time of the last check. This is done in case server time isn't quite right. That's very common. In theory, you can just fix this on the server, but if you're running this on shared hosting you may not have access to that.
