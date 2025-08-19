@@ -54,4 +54,4 @@ A simple PHP-based server status web app for monitoring and displaying uptime an
 - ServerStatus just checks for a 200 OK status code. Any other status code or a time out will mean the check is failed.
 
 ## Support
-For help, set the support section and link in `config.php` or contact Wag Websites via your configured support link.
+For help, set the support section and link in `config.php` to your contact page, support portal, etc.
