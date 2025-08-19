@@ -19,7 +19,7 @@ $email = [
 ];
 
 // Site Name
-$display_name = 'Wag Websites Server Status';
+$display_name = 'Server Status';
 
 // Footer Content
 $footer_content = '';
