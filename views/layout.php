@@ -20,7 +20,7 @@
         if (!empty($footer_content)) {
             echo $footer_content;
         } else {
-            echo 'Powered by Server Status by Michael Staake';
+            echo 'Powered by <a href="https://github.com/michaelstaake/ServerStatus" target="_blank>ServerStatus</a>';
         }
         ?>
     </footer>

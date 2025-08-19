@@ -1,4 +1,4 @@
-# Wag Websites Server Status
+# ServerStatus by Michael Staake
 
 A simple PHP-based server status dashboard for monitoring and displaying uptime and status of multiple servers.
 
