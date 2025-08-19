@@ -1,11 +1,11 @@
 # ServerStatus by Michael Staake
 
-A simple PHP-based server status dashboard for monitoring and displaying uptime and status of multiple servers.
+A simple PHP-based server status web app for monitoring and displaying uptime and status of your servers.
 
 ## Installation
 
 1. **Clone or Download the Repository**
-   - Place the files on your web server. Subdomains are supported by subfolders are not.
+   - Place the files on your web server. Subdomains are supported but subfolders are not.
 
 2. **Configuration**
    - Rename `config.example.php` to `config.php`.
