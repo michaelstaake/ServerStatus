@@ -52,6 +52,3 @@ A simple PHP-based server status web app for monitoring and displaying uptime an
 ## Notes
 - The last checked time on the server page automatically deducts 5 minutes from the actual time of the last check. This is done in case server time isn't quite right. That's very common. In theory, you can just fix this on the server, but if you're running this on shared hosting you may not have access to that.
 - ServerStatus just checks for a 200 OK status code. Any other status code or a time out will mean the check is failed.
-
-## Support
-For help, set the support section and link in `config.php` to your contact page, support portal, etc.
