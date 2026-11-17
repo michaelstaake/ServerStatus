@@ -1,17 +1,26 @@
-RewriteEngine On
+# Napa AI Status (ServerStatus)
 
-# Force SSL (not for AutoSSL domain checks)
-RewriteCond %{HTTPS} off
-RewriteCond %{REQUEST_URI} !^/\.well-known/
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+Options -Indexes -MultiViews
+DirectoryIndex index.php
 
-# Keep logs, schema, docs, and internals private
-<FilesMatch "(^\.|\.(log|sql|md)$|^(config|config\.example|Database|cron)\.php$|^LICENSE$|^php\.ini$)">
-    Require all denied
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS (AutoSSL domain checks stay on HTTP)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Internals are never served directly
+  RewriteRule ^(models|controllers|views|vendors)(/|$) - [F,L]
+
+  # Send everything that is not a real file or directory to index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Never serve dotfiles, logs, schema, docs, config, or the cron script
+<FilesMatch "^\.|\.(?:sql|log|ini|md)$|^(?:config|config\.example|Database|cron)\.php$|^LICENSE$">
+  Require all denied
 </FilesMatch>
-RewriteRule ^(models|controllers|views|vendors)(/|$) - [F,L]
-
-# Route all requests to index.php unless file or directory exists
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
