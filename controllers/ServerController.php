@@ -11,7 +11,7 @@ class ServerController {
 
         if (!$server) {
             http_response_code(404);
-            $title = 'Not Found';
+            $title = 'Page not found';
             $content_file = 'views/error_404.php';
             require 'views/layout.php';
             return;
@@ -19,7 +19,7 @@ class ServerController {
 
         if ($server['display'] === 'disabled') {
             http_response_code(403);
-            $title = 'Forbidden';
+            $title = 'Access denied';
             $content_file = 'views/error_403.php';
             require 'views/layout.php';
             return;

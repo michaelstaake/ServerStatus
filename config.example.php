@@ -19,7 +19,10 @@ $email = [
 ];
 
 // Site Name
-$display_name = 'Server Status';
+$display_name = 'Napa AI Status';
+
+// Meta description
+$site_description = 'Current status of Napa AI websites and services.';
 
 // Footer Content
 $footer_content = '';
@@ -35,11 +38,11 @@ date_default_timezone_set($site_timezone);
 $min_uptime = null; // Example: 99.5
 
 // Base URL for the site (used in email links)
-$baseURL = 'https://status.example.com/';
+$baseURL = 'https://status.napa-ai.com/';
 
 // Support section on server pages
-$support_section = false; // true to show, false to hide
-$support_link = 'https://example.com/support';
+$support_section = true; // true to show, false to hide
+$support_link = 'https://portal.napa-ai.com/submitticket.php'; // "Submit a ticket" button
 
 // Development mode toggle
 // false: cron can only run from cli, errors are logged only. true: cron can run from browser, errors are displayed and logged.

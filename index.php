@@ -24,7 +24,7 @@ if (!extension_loaded('pdo_mysql') || !extension_loaded('curl')) {
 
 if (!$requirements_met) {
     http_response_code(503);
-    $title = 'System Requirements Not Met';
+    $title = 'System requirements not met';
     $content_file = 'views/error_requirements.php';
     require 'views/layout.php';
     exit;
@@ -32,7 +32,7 @@ if (!$requirements_met) {
 
 if ($maintenance) {
     http_response_code(503);
-    $title = 'Maintenance Mode';
+    $title = 'Down for maintenance';
     $content_file = 'views/error_maintenance.php';
     require 'views/layout.php';
     exit;
@@ -59,7 +59,7 @@ if (empty($uri)) {
     $controller->show($slug);
 } else {
     http_response_code(404);
-    $title = 'Not Found';
+    $title = 'Page not found';
     $content_file = 'views/error_404.php';
     require 'views/layout.php';
 }

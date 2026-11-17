@@ -1,8 +1,15 @@
 RewriteEngine On
 
-# Force SSL
+# Force SSL (not for AutoSSL domain checks)
 RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Keep logs, schema, docs, and internals private
+<FilesMatch "(^\.|\.(log|sql|md)$|^(config|config\.example|Database|cron)\.php$|^LICENSE$|^php\.ini$)">
+    Require all denied
+</FilesMatch>
+RewriteRule ^(models|controllers|views|vendors)(/|$) - [F,L]
 
 # Route all requests to index.php unless file or directory exists
 RewriteCond %{REQUEST_FILENAME} !-f

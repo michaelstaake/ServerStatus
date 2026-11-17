@@ -1,2 +1,7 @@
-<h2 class="text-xl font-semibold mb-4">Maintenance Mode</h2>
-<p>The site is currently under maintenance. Please check back later.</p>
+<section class="page-head page-head--error">
+  <div class="wrap">
+    <p class="eyebrow">Status</p>
+    <h1 class="page-head__title">Down for maintenance</h1>
+    <p class="lead">This status page is getting some maintenance. Please check back soon.</p>
+  </div>
+</section>

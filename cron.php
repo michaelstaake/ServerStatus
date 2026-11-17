@@ -1,11 +1,11 @@
-
 <?php
+chdir(__DIR__);
 require_once 'config.php';
 
 // Block browser access unless dev_mode is enabled
 if (php_sapi_name() !== 'cli' && !$dev_mode) {
     http_response_code(403);
-    $title = 'Forbidden';
+    $title = 'Access denied';
     $content_file = 'views/error_403.php';
     require 'views/layout.php';
     exit;
