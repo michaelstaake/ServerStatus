@@ -20,5 +20,3 @@ class HomeController {
     require 'views/layout.php';
     }
 }
-
-?>
