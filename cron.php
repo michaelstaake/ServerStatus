@@ -45,19 +45,28 @@ foreach ($servers as $server) {
     $monitored = $server['monitored'];
     $slug = $server['slug'];
 
-    // Perform the check using cURL
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    $response = curl_exec($ch);
-    $error = curl_error($ch);
-    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    if (preg_match('#^tcp://([^/:]+):(\d+)/?$#i', $url, $m)) {
+        // TCP check: passes when the port accepts a connection (for example DNS on port 53)
+        $sock = @fsockopen($m[1], (int) $m[2], $errno, $errstr, 10);
+        $status = $sock ? 'passed' : 'failed';
+        if ($sock) {
+            fclose($sock);
+        }
+    } else {
+        // Perform the check using cURL
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $response = curl_exec($ch);
+        $error = curl_error($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-    $status = ($code === 200 && empty($error)) ? 'passed' : 'failed';
+        $status = ($code === 200 && empty($error)) ? 'passed' : 'failed';
+    }
 
     // Insert the check
     $checkModel->insert($id, $status);
