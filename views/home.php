@@ -63,7 +63,7 @@ $ss_latest_text = ss_check_time($ss_latest);
     <?php endif; ?>
 
     <p class="footnote">
-      Services are checked automatically <?php echo ss_e($how_often); ?>, so this page may be slightly behind, and percentages may be rounded. Uptime covers the last 30 days.
+      Services are checked automatically <?php echo ss_e($how_often); ?>, so this page may be slightly behind, and percentages may be rounded. Calculated uptime percentage is calculated based on the last 30 days.
     </p>
   </div>
 </section>
