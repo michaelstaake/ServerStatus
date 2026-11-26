@@ -29,7 +29,7 @@ $ss_description = !empty($site_description) ? $site_description : 'Current statu
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="/" aria-label="<?php echo ss_e($ss_site); ?> home">
-      <img src="/assets/img/napa-ai-logo.svg" alt="Napa AI" width="113" height="30">
+      <img src="/assets/img/napa-ai-logo.svg" alt="Napa AI" width="96" height="30">
       <span class="brand__product">Status</span>
     </a>
 
